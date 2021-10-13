@@ -21,7 +21,7 @@ class Intro1 extends StatelessWidget {
           height: 200,
           width: 200,
           shape: BoxShape.circle,
-          image: NetworkImage('assets/images/intro.jpg'),
+          image: AssetImage('assets/images/intro.jpg'),
           boxFit: BoxFit.cover,
         ),
       ),

@@ -9,4 +9,9 @@ class ControllerHome extends GetxController {
     "https://cdn.pixabay.com/photo/2019/12/22/04/18/x-mas-4711785__340.jpg",
     "https://cdn.pixabay.com/photo/2016/11/22/07/09/spruce-1848543__340.jpg"
   ];
+
+  final _selectedIndex = 0.obs;
+
+  get selectedindex => this._selectedIndex.value;
+  set selectedindex(index) => this._selectedIndex.value = index;
 }

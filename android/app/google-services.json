@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "898849370410",
+    "project_id": "masak-93bf7",
+    "storage_bucket": "masak-93bf7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:898849370410:android:cc1ff5efe4418847af2e53",
+        "android_client_info": {
+          "package_name": "com.example.masakan"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "898849370410-r42tguvfpfi9tgpvu1rbr9c8kmm0rpaa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCdN1x04afYMa-NUTEWLvo7E-UydMlanlk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "898849370410-r42tguvfpfi9tgpvu1rbr9c8kmm0rpaa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

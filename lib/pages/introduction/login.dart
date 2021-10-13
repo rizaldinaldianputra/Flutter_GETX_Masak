@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
+
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:masakan/routing/name_routing.dart';
