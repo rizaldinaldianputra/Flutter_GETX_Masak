@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:getwidget/getwidget.dart';
 
 class Detail extends StatelessWidget {
   const Detail({Key? key}) : super(key: key);
@@ -9,42 +10,66 @@ class Detail extends StatelessWidget {
       appBar: AppBar(
         title: Text("Detail Makanan"),
       ),
-      body: ListView(
-        children: [
-          Container(),
-          Container(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Column(
-                  children: [
-                    Text('Bahan'),
-                    SizedBox(
-                      width: 10,
+      body: ListView.builder(
+          itemCount: 10,
+          itemBuilder: (context, index) => GFStickyHeader(
+                stickyContent: Container(
+                  child: Container(
+                    alignment: AlignmentDirectional.center,
+                    height: 50,
+                    width: MediaQuery.of(context).size.width,
+                    color: Color(0xFF42335d),
+                    padding: EdgeInsets.symmetric(horizontal: 16.0),
+                    child: Row(
+                      children: [
+                        Text(
+                          'Contact Group $index',
+                          style: const TextStyle(color: Colors.white),
+                        ),
+                      ],
                     ),
-                    Text('Bahan'),
-                    Text('Bahan'),
-                    Text('Bahan'),
-                    Text('Bahan'),
-                  ],
+                  ),
                 ),
-                Column(
-                  children: [
-                    Text('Pcs'),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Text('1 Kg'),
-                    Text('2 Buah'),
-                    Text('3 Buah'),
-                    Text('4 Pcs'),
-                  ],
-                )
-              ],
-            ),
-          ),
-        ],
-      ),
+                content: Container(
+                  height: 300,
+                  child: ListView.builder(
+                      physics: ScrollPhysics(),
+                      shrinkWrap: true,
+                      scrollDirection: Axis.vertical,
+                      itemCount: 8,
+                      itemBuilder: (BuildContext context, int index) {
+                        return SingleChildScrollView(
+                          child: Column(
+                            children: [
+                              GFCheckboxListTile(
+                                titleText: 'Eva Mendez',
+                                subTitleText: 'Hello',
+                                avatar: GFAvatar(
+                                  backgroundImage:
+                                      AssetImage('asset image here'),
+                                ),
+                                size: 25,
+                                activeBgColor: Colors.green,
+                                activeIcon: Icon(
+                                  Icons.check,
+                                  size: 15,
+                                  color: Colors.white,
+                                ),
+                                type: GFCheckboxType.circle,
+                                value: true,
+                                onChanged: (bool value) {},
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 20.0),
+                                child: Divider(),
+                              ),
+                            ],
+                          ),
+                        );
+                      }),
+                ),
+              )),
     );
   }
 }

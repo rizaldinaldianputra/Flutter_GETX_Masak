@@ -7,4 +7,6 @@ abstract class RouteName {
   static const login = '/login';
   static const detail = '/detail';
   static const agenda = '/agenda';
+
+  static const reset = '/reset';
 }

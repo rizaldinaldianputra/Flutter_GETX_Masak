@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:masakan/controller/controllers_auth.dart';
+import 'package:masakan/controller/controllers_resetpassword.dart';
 import 'package:masakan/controller/controllers_signout.dart';
 import 'package:masakan/routing/name_routing.dart';
 
-class Register extends GetView<ControllerSignOut> {
+class Resetpassword extends GetView<ControllerReset> {
   final authC = Get.find<Authcontrollers>();
   @override
   Widget build(BuildContext context) {
@@ -48,7 +49,7 @@ class Register extends GetView<ControllerSignOut> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Text(
-                          'Sign Up',
+                          'Reset Password',
                           textAlign: TextAlign.center,
                           style: TextStyle(fontSize: 40, color: Colors.black),
                         ),
@@ -63,22 +64,7 @@ class Register extends GetView<ControllerSignOut> {
                             labelText: 'Email',
                           ),
                         ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        TextField(
-                          controller: controller.passC,
-                          obscureText: true,
-                          decoration: InputDecoration(
-                            icon: Icon(Icons.vpn_key),
-                            suffixIcon: Icon(Icons.remove_red_eye),
-                            border: OutlineInputBorder(),
-                            labelText: 'Password',
-                          ),
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
+
                         // TextField(
                         //   obscureText: true,
                         //   decoration: InputDecoration(
@@ -93,12 +79,11 @@ class Register extends GetView<ControllerSignOut> {
                         GFButton(
                           color: Colors.black,
                           onPressed: () {
-                            authC.signup(
-                                controller.emailC.text, controller.passC.text);
+                            authC.resetpassword(controller.emailC.text);
                           },
                           icon:
                               Icon(Icons.app_registration, color: Colors.white),
-                          text: "Sign Up ",
+                          text: "Kirim Reset ",
                           textStyle: TextStyle(fontSize: 16),
                           type: GFButtonType.solid,
                           fullWidthButton: true,

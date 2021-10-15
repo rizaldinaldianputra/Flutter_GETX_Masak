@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:masakan/controller/controllers_auth.dart';
+import 'package:masakan/controller/controllers_login.dart';
 import 'package:masakan/routing/name_routing.dart';
 
-class Login extends StatelessWidget {
+class Login extends GetView<ControllerLogin> {
   @override
   Widget build(BuildContext context) {
+    final authC = Get.find<Authcontrollers>();
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Container(
@@ -46,14 +49,16 @@ class Login extends StatelessWidget {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const TextField(
+                          TextField(
+                            controller: controller.emailC,
                             decoration: InputDecoration(
                               icon: Icon(Icons.person),
                               border: OutlineInputBorder(),
-                              labelText: 'Username',
+                              labelText: 'Email',
                             ),
                           ),
                           TextField(
+                            controller: controller.passC,
                             obscureText: true,
                             decoration: InputDecoration(
                               icon: Icon(Icons.vpn_key),
@@ -63,28 +68,45 @@ class Login extends StatelessWidget {
                             ),
                           ),
                           Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Container(
-                                child: Row(
-                                  children: [
-                                    GFToggle(
-                                      enabledTrackColor: Colors.blue,
-                                      onChanged: (val) {},
-                                      value: false,
-                                      type: GFToggleType.android,
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Container(
+                                    child: Row(
+                                      children: [
+                                        GFToggle(
+                                          enabledTrackColor: Colors.blue,
+                                          onChanged: (val) {},
+                                          value: false,
+                                          type: GFToggleType.android,
+                                        ),
+                                        Text('Remember Me'),
+                                      ],
                                     ),
-                                    Text('Remember Me'),
-                                  ],
-                                ),
+                                  ),
+                                ],
                               ),
+                              SizedBox(
+                                width: 50,
+                              ),
+                              InkWell(
+                                splashColor: Colors.blue,
+                                onTap: () {
+                                  Get.toNamed(RouteName.reset);
+                                },
+                                child: Text('Lupa Password ?',
+                                    style: TextStyle(color: Colors.blue)),
+                              )
                             ],
                           ),
                           SizedBox(height: 20),
                           GFButton(
                             color: Colors.black,
                             onPressed: () {
-                              Get.toNamed(RouteName.intro1);
+                              authC.login(controller.emailC.text,
+                                  controller.passC.text);
                             },
                             icon: Icon(Icons.login, color: Colors.white),
                             text: "Sign in ",
@@ -119,7 +141,7 @@ class Login extends StatelessWidget {
                             onTap: () {
                               Get.toNamed(RouteName.register);
                             },
-                            child: Text('Dont you have account ?',
+                            child: Text('Belum Punya Akun.?',
                                 style: TextStyle(color: Colors.blue)),
                           ),
                         ],

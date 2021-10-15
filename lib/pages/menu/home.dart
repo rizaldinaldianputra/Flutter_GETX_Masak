@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:masakan/controller/controllers_auth.dart';
 
 import 'package:masakan/controller/controllers_home.dart';
 
@@ -14,7 +15,7 @@ import 'masakan.dart';
 
 class Home extends GetView<ControllerHome> {
   final c = Get.find<ControllerHome>();
-
+  final authC = Get.find<Authcontrollers>();
   final List<Widget> bodyContent = [
     Dashboard(),
     Detail(),
@@ -52,6 +53,12 @@ class Home extends GetView<ControllerHome> {
               title: Text('Item 2'),
               onTap: () {},
             ),
+            ElevatedButton.icon(
+                onPressed: () {
+                  authC.logout();
+                },
+                icon: Icon(Icons.logout_outlined),
+                label: Text('Sign Out'))
           ],
         ),
       ),
@@ -149,7 +156,6 @@ class Dashboard extends StatelessWidget {
                 itemBuilder: (BuildContext context, int index) {
                   return Expanded(
                     child: GFCard(
-                      color: Colors.orange[100],
                       boxFit: BoxFit.cover,
                       titlePosition: GFPosition.start,
                       image: Image.asset(
